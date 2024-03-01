@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Max out of 3 numbers
+
+a=$1
+
+b=$2
+
+c=$3
+
+
+
+if [ $a -gt $b ]
+
+then
+
+max=$a
+
+else
+
+max=$b
+
+fi
+
+
+
+if [ $max -gt $c ]
+
+then
+
+max=$max
+
+else
+
+max=$c
+
+fi
+
+
+
+echo "Maximum number: $max"
