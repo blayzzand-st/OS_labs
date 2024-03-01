@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Select top 3 words in >man bash
+
+FILE=$(man bash)
+
+PATTERN="\<[[:alpha:]]{4,}\>"
+
+
+
+# Place each word on its own line; Select only >4 letters; Sort for uniq and count; Select top 3 most common
+
+echo "$FILE" | tr -c '[[:alnum:]]' '[\n*]' | grep -Eo "$PATTERN" | sort | uniq -ci | sort -rnk1 | head -3
+
+
+
+# ฅ^•ﻌ•^ฅ

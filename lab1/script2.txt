@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Concatenate strings until 'q'
+
+input="."
+
+
+
+while [ $input != "q" ]
+
+do
+
+echo "Enter your text: "
+
+read input
+
+
+
+if [ $input != "q" ]
+
+then
+
+result+=$input
+
+result+=" "
+
+fi
+
+
+
+done
+
+
+
+echo "Result: $result"

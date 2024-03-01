@@ -1,0 +1,73 @@
+#!/bin/bash
+
+# Search all emails in directory
+
+# Search letters, numbers, or dots (some.one@mail.en)
+
+PATTERN="\<[[:alnum:].]+@[[:alnum:]]+\.[[:alpha:]]+\>"
+
+
+
+
+
+# _OPTION 1_ #
+
+
+
+#touch emails.lst
+
+
+
+#sudo grep -EoI "$PATTERN" /etc/* | sed 's/.*://' | tr '\n' ',' > emails.lst
+
+
+
+
+
+# _OPTION 2_ #
+
+
+
+touch emails.lst
+
+
+
+for file in /etc/*; do
+
+	if [[ -f "$file" ]]; then
+
+		temp=$(sudo grep -EoI "$PATTERN" "$file")
+
+		
+
+		# add only if temp not empty
+
+		if [[ -n "$temp" ]]; then
+
+			result+="$temp, "
+
+		fi
+
+	
+
+	fi
+
+done
+
+
+
+echo $result > emails.lst
+
+
+
+# delete last comma of result
+
+sed '$ s/.$/\n/' emails.lst > temp.lst
+
+cat temp.lst > emails.lst
+
+
+
+# remove unnecessary file
+
+rm temp.lst

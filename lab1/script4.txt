@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Check directory
+
+WORKING_DIR=$(pwd)
+
+
+
+if [[ $WORKING_DIR == $HOME ]]
+
+then
+
+	echo $HOME
+
+	exit 0
+
+else
+
+	echo "Error Occured"
+
+	exit 1
+
+fi

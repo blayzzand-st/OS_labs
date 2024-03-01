@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Get amount of logs in directory
+
+DIR="/var/log/"
+
+
+
+cd "$DIR"
+
+
+
+sudo wc -l *.log | tail -n1 | sed 's/^  //'	# Use sed for delete two spaces at the beginning of a row

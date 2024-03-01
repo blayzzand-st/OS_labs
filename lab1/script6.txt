@@ -1,0 +1,55 @@
+#!/bin/bash
+
+
+
+LOG="/var/log/dpkg.log"
+
+PATTERN="^.* .* status|configure .*$"
+
+# Select and edit logs
+
+touch full.log
+
+
+
+# select all appropriate logs to full.log
+
+grep -E "$PATTERN" "$LOG" > full.log
+
+
+
+# replace and move to temporary file
+
+sed -e '
+
+s/status/Status:/
+
+s/configure/Configure:/' ./full.log > temp.log
+
+
+
+# move backward
+
+cat temp.log > full.log
+
+
+
+# sort and move to temporary file
+
+sort -r -k3 ./full.log > temp.log
+
+
+
+# move backward
+
+cat ./temp.log > ./full.log
+
+
+
+# remove unnecessary temp file
+
+rm temp.log
+
+
+
+cat full.log
